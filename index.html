@@ -15,6 +15,9 @@
     rel="stylesheet"
   />
 
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <!-- Main Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -126,10 +129,13 @@
 
           <div class="card-grid">
             <article class="card">
+              <div class="card-icon">
+                <i data-lucide="rocket"></i>
+              </div>
               <h3>Startup Support</h3>
               <p>
                 Get from idea to first customers with coaching, peer groups, and access to
-                experienced founders who’ve done it before.
+                experienced founders who've done it before.
               </p>
               <ul>
                 <li>Customer discovery &amp; validation</li>
@@ -139,6 +145,9 @@
             </article>
 
             <article class="card">
+              <div class="card-icon">
+                <i data-lucide="trending-up"></i>
+              </div>
               <h3>Scale-Up Programs</h3>
               <p>
                 Navigate growth, international expansion, and operational complexity with hands-on
@@ -152,9 +161,12 @@
             </article>
 
             <article class="card">
+              <div class="card-icon">
+                <i data-lucide="users"></i>
+              </div>
               <h3>Talent &amp; Hiring</h3>
               <p>
-                Connect with top talent, upskill your team, and tap into the region’s deep pipeline
+                Connect with top talent, upskill your team, and tap into the region's deep pipeline
                 of technical and commercial expertise.
               </p>
               <ul>
@@ -165,6 +177,9 @@
             </article>
 
             <article class="card">
+              <div class="card-icon">
+                <i data-lucide="lightbulb"></i>
+              </div>
               <h3>Corporate Innovation</h3>
               <p>
                 Match real-world business problems with startup solutions through curated pilots and
@@ -178,6 +193,9 @@
             </article>
 
             <article class="card">
+              <div class="card-icon">
+                <i data-lucide="landmark"></i>
+              </div>
               <h3>Government Partnerships</h3>
               <p>
                 Navigate programs, incentives, and funding opportunities with guidance from our
@@ -294,6 +312,9 @@
 
           <div class="card-grid card-grid-3">
             <article class="card">
+              <div class="card-icon">
+                <i data-lucide="coffee"></i>
+              </div>
               <h3>Founder Meetups</h3>
               <p>
                 Curated sessions for early-stage and scaling founders to share challenges, swap
@@ -303,6 +324,9 @@
             </article>
 
             <article class="card">
+              <div class="card-icon">
+                <i data-lucide="presentation"></i>
+              </div>
               <h3>Tech &amp; Talent Events</h3>
               <p>
                 Events focused on attracting, retaining, and developing the talent needed to drive
@@ -312,9 +336,12 @@
             </article>
 
             <article class="card">
+              <div class="card-icon">
+                <i data-lucide="megaphone"></i>
+              </div>
               <h3>Pitch &amp; Showcase Nights</h3>
               <p>
-                A chance for founders to share what they’re building with investors, partners, and
+                A chance for founders to share what they're building with investors, partners, and
                 the broader community.
               </p>
               <p class="meta">Ongoing · Application-based</p>
@@ -379,17 +406,83 @@
 
     <!-- Footer -->
     <footer class="site-footer">
-      <div class="container footer-inner">
-        <p>&copy; <span id="year"></span> Communitech. All rights reserved.</p>
-        <p class="footer-meta">
-          Built for founders in Waterloo Region and across Canada.
-        </p>
+      <div class="container">
+        <div class="footer-inner">
+          <!-- Brand Column -->
+          <div class="footer-brand">
+            <h3>Communitech</h3>
+            <p>
+              Building Canada's most innovative tech ecosystem. We support founders, scale-ups,
+              and innovators in Waterloo Region and beyond.
+            </p>
+            <div class="social-links">
+              <a href="#" aria-label="LinkedIn">
+                <i data-lucide="linkedin"></i>
+              </a>
+              <a href="#" aria-label="Twitter">
+                <i data-lucide="twitter"></i>
+              </a>
+              <a href="#" aria-label="Facebook">
+                <i data-lucide="facebook"></i>
+              </a>
+              <a href="#" aria-label="Instagram">
+                <i data-lucide="instagram"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Programs -->
+          <div class="footer-section">
+            <h4>Programs</h4>
+            <ul class="footer-links">
+              <li><a href="#programs">Startup Support</a></li>
+              <li><a href="#programs">Scale-Up Programs</a></li>
+              <li><a href="#programs">Talent &amp; Hiring</a></li>
+              <li><a href="#programs">Corporate Innovation</a></li>
+            </ul>
+          </div>
+
+          <!-- Company -->
+          <div class="footer-section">
+            <h4>Company</h4>
+            <ul class="footer-links">
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#success">Success Stories</a></li>
+              <li><a href="#ecosystem">Ecosystem</a></li>
+              <li><a href="#events">Events</a></li>
+            </ul>
+          </div>
+
+          <!-- Connect -->
+          <div class="footer-section">
+            <h4>Connect</h4>
+            <ul class="footer-links">
+              <li><a href="#contact">Contact Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Newsletter</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <p>&copy; <span id="year"></span> Communitech. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Accessibility</a>
+          </div>
+        </div>
       </div>
     </footer>
   </div>
 
   <script>
-    // Simple script to keep the footer year current (optional)
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Keep the footer year current
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
