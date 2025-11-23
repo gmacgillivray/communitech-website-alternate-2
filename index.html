@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Communitech | Waterloo Region Tech Innovation Hub</title>
+  <title>Communitech | Waterloo's Innovation Engine</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="Communitech helps founders start, grow, and scale globally competitive tech companies from Waterloo Region."
+    content="Waterloo's Innovation Engine: From First Customer to Global Scale. Communitech helps founders start, grow, and scale globally competitive tech companies."
   />
 
   <!-- Google Fonts -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&display=swap"
     rel="stylesheet"
   />
 
@@ -28,18 +28,27 @@
     <header class="site-header">
       <div class="container header-inner">
         <div class="logo">
-          <!-- Replace with actual Communitech logo if desired -->
           <span class="logo-mark">C</span>
           <span class="logo-text">Communitech</span>
         </div>
 
+        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+          <span class="hamburger"></span>
+        </button>
+
         <nav class="main-nav" aria-label="Main navigation">
-          <a href="#about">About</a>
-          <a href="#programs">Programs</a>
-          <a href="#success">Success Stories</a>
-          <a href="#ecosystem">Ecosystem</a>
-          <a href="#events">Events</a>
-          <a href="#contact" class="nav-cta">Contact</a>
+          <div class="nav-group">
+            <a href="#" class="nav-link-with-dropdown">For Founders <i data-lucide="chevron-down" class="nav-chevron"></i></a>
+            <a href="#" class="nav-link-with-dropdown">For Scale-Ups <i data-lucide="chevron-down" class="nav-chevron"></i></a>
+            <a href="#" class="nav-link-with-dropdown">For Corporates <i data-lucide="chevron-down" class="nav-chevron"></i></a>
+          </div>
+          <div class="nav-group">
+            <a href="#resources">Resources</a>
+            <a href="#success">Stories</a>
+            <a href="#events">Events</a>
+            <a href="#about">About</a>
+            <a href="#contact" class="nav-cta">Get Started</a>
+          </div>
         </nav>
       </div>
     </header>
@@ -49,31 +58,59 @@
       <div class="hero-overlay"></div>
       <div class="container hero-inner">
         <div class="hero-content">
-          <h1>Building Canada’s Next Generation of Tech Leaders</h1>
+          <h1>Waterloo's Innovation Engine: From First Customer to Global Scale</h1>
           <p>
-            Communitech helps founders start, grow, and scale globally competitive tech companies —
-            connecting the Waterloo Region ecosystem of talent, capital, and partners.
+            We help founders and scale-ups build world-class tech companies in Canada's most
+            dynamic innovation ecosystem — connecting you with talent, capital, and global partners.
           </p>
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary">Join the Community</a>
-            <a href="#programs" class="btn btn-secondary">Explore Programs</a>
+            <a href="#contact" class="btn btn-primary">Apply to Programs</a>
+            <a href="#programs" class="btn btn-secondary">Explore How We Help</a>
           </div>
         </div>
 
         <div class="hero-aside" aria-hidden="true">
           <div class="hero-stat-card">
-            <h3>1,000+</h3>
-            <p>companies supported through our programs and community.</p>
+            <h3>1,400+</h3>
+            <p>Companies supported annually through our programs and community</p>
           </div>
           <div class="hero-stat-card">
-            <h3>Waterloo Region</h3>
-            <p>A globally recognized hub for tech innovation and talent.</p>
+            <h3>Top 5</h3>
+            <p>Waterloo Region ranks among the world's top startup ecosystems</p>
           </div>
         </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <i data-lucide="chevron-down"></i>
       </div>
     </section>
 
     <main>
+      <!-- Impact Metrics Section -->
+      <section class="impact-section">
+        <div class="container">
+          <div class="impact-grid">
+            <div class="impact-stat">
+              <div class="impact-number" data-target="1400">0</div>
+              <div class="impact-label">Companies Supported</div>
+            </div>
+            <div class="impact-stat">
+              <div class="impact-number" data-target="250" data-suffix="M+">0</div>
+              <div class="impact-label">Capital Raised</div>
+            </div>
+            <div class="impact-stat">
+              <div class="impact-number" data-target="150">0</div>
+              <div class="impact-label">Mentors & Advisors</div>
+            </div>
+            <div class="impact-stat">
+              <div class="impact-number" data-target="15">0</div>
+              <div class="impact-label">Years Building Ecosystem</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- About -->
       <section id="about" class="section section-alt">
         <div class="container section-inner">
@@ -107,7 +144,7 @@
                 <li>Investors, mentors, and ecosystem builders</li>
               </ul>
               <p>
-                Situated in the heart of Waterloo Region, we’re part of one of the world’s most
+                Situated in the heart of Waterloo Region, we're part of one of the world's most
                 dynamic tech ecosystems — anchored by research, talent, and a strong culture of
                 collaboration.
               </p>
@@ -116,7 +153,23 @@
         </div>
       </section>
 
-      <!-- Programs & Support -->
+      <!-- Newsletter Signup -->
+      <section class="newsletter-section">
+        <div class="container">
+          <div class="newsletter-inner">
+            <div class="newsletter-content">
+              <h2>Stay Connected</h2>
+              <p>Get monthly startup resources, funding opportunities, and event invites delivered to your inbox.</p>
+            </div>
+            <form class="newsletter-form" aria-label="Newsletter signup">
+              <input type="email" placeholder="Your email address" aria-label="Email address" required />
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Programs & Support with Tabs -->
       <section id="programs" class="section">
         <div class="container section-inner">
           <div class="section-header">
@@ -127,86 +180,130 @@
             </p>
           </div>
 
-          <div class="card-grid">
-            <article class="card">
-              <div class="card-icon">
-                <i data-lucide="rocket"></i>
-              </div>
-              <h3>Startup Support</h3>
-              <p>
-                Get from idea to first customers with coaching, peer groups, and access to
-                experienced founders who've done it before.
-              </p>
-              <ul>
-                <li>Customer discovery &amp; validation</li>
-                <li>Business model support</li>
-                <li>Founder peer circles</li>
-              </ul>
-            </article>
+          <div class="program-tabs">
+            <button class="tab-btn active" data-tab="founders">For Founders</button>
+            <button class="tab-btn" data-tab="scaleups">For Scale-Ups</button>
+            <button class="tab-btn" data-tab="partners">For Partners</button>
+          </div>
 
-            <article class="card">
-              <div class="card-icon">
-                <i data-lucide="trending-up"></i>
-              </div>
-              <h3>Scale-Up Programs</h3>
-              <p>
-                Navigate growth, international expansion, and operational complexity with hands-on
-                support from industry and subject-matter experts.
-              </p>
-              <ul>
-                <li>Revenue and GTM acceleration</li>
-                <li>International market access</li>
-                <li>Leadership &amp; team scaling</li>
-              </ul>
-            </article>
+          <div class="tab-content active" id="founders">
+            <div class="card-grid">
+              <article class="card card-featured">
+                <div class="featured-badge">Most Popular</div>
+                <div class="card-icon">
+                  <i data-lucide="rocket"></i>
+                </div>
+                <h3>Startup Support</h3>
+                <p class="card-subtitle">Best for early-stage founders</p>
+                <p>
+                  Get from idea to first customers with coaching, peer groups, and access to
+                  experienced founders who've done it before.
+                </p>
+                <ul>
+                  <li>Customer discovery &amp; validation</li>
+                  <li>Business model support</li>
+                  <li>Founder peer circles</li>
+                  <li>Pitch coaching</li>
+                </ul>
+                <a href="#contact" class="card-cta">Learn More <i data-lucide="arrow-right"></i></a>
+              </article>
 
-            <article class="card">
-              <div class="card-icon">
-                <i data-lucide="users"></i>
-              </div>
-              <h3>Talent &amp; Hiring</h3>
-              <p>
-                Connect with top talent, upskill your team, and tap into the region's deep pipeline
-                of technical and commercial expertise.
-              </p>
-              <ul>
-                <li>Talent programs and recruitment support</li>
-                <li>Campus and community connections</li>
-                <li>Employer branding opportunities</li>
-              </ul>
-            </article>
+              <article class="card">
+                <div class="card-icon">
+                  <i data-lucide="users"></i>
+                </div>
+                <h3>Talent &amp; Hiring</h3>
+                <p>
+                  Connect with top talent, upskill your team, and tap into the region's deep pipeline
+                  of technical and commercial expertise.
+                </p>
+                <ul>
+                  <li>Talent programs and recruitment support</li>
+                  <li>Campus and community connections</li>
+                  <li>Employer branding opportunities</li>
+                </ul>
+                <a href="#contact" class="card-cta">Learn More <i data-lucide="arrow-right"></i></a>
+              </article>
+            </div>
+          </div>
 
-            <article class="card">
-              <div class="card-icon">
-                <i data-lucide="lightbulb"></i>
-              </div>
-              <h3>Corporate Innovation</h3>
-              <p>
-                Match real-world business problems with startup solutions through curated pilots and
-                partnerships with our founder community.
-              </p>
-              <ul>
-                <li>Challenge-based sourcing</li>
-                <li>Pilot design &amp; execution</li>
-                <li>Strategic ecosystem introductions</li>
-              </ul>
-            </article>
+          <div class="tab-content" id="scaleups">
+            <div class="card-grid">
+              <article class="card card-featured">
+                <div class="featured-badge">Growth Focused</div>
+                <div class="card-icon">
+                  <i data-lucide="trending-up"></i>
+                </div>
+                <h3>Scale-Up Programs</h3>
+                <p class="card-subtitle">Best for companies with product-market fit</p>
+                <p>
+                  Navigate growth, international expansion, and operational complexity with hands-on
+                  support from industry and subject-matter experts.
+                </p>
+                <ul>
+                  <li>Revenue and GTM acceleration</li>
+                  <li>International market access</li>
+                  <li>Leadership &amp; team scaling</li>
+                  <li>Strategic partnerships</li>
+                </ul>
+                <a href="#contact" class="card-cta">Learn More <i data-lucide="arrow-right"></i></a>
+              </article>
 
-            <article class="card">
-              <div class="card-icon">
-                <i data-lucide="landmark"></i>
-              </div>
-              <h3>Government Partnerships</h3>
-              <p>
-                Navigate programs, incentives, and funding opportunities with guidance from our
-                experienced team and partners.
-              </p>
-              <ul>
-                <li>Program awareness and navigation</li>
-                <li>Application strategy support</li>
-                <li>Public sector innovation pilots</li>
-              </ul>
-            </article>
+              <article class="card">
+                <div class="card-icon">
+                  <i data-lucide="globe"></i>
+                </div>
+                <h3>Global Market Entry</h3>
+                <p>
+                  Expand into new markets with confidence through our international partnerships
+                  and market-specific expertise.
+                </p>
+                <ul>
+                  <li>Market research &amp; strategy</li>
+                  <li>International partnerships</li>
+                  <li>Soft landing programs</li>
+                </ul>
+                <a href="#contact" class="card-cta">Learn More <i data-lucide="arrow-right"></i></a>
+              </article>
+            </div>
+          </div>
+
+          <div class="tab-content" id="partners">
+            <div class="card-grid">
+              <article class="card">
+                <div class="card-icon">
+                  <i data-lucide="lightbulb"></i>
+                </div>
+                <h3>Corporate Innovation</h3>
+                <p>
+                  Match real-world business problems with startup solutions through curated pilots and
+                  partnerships with our founder community.
+                </p>
+                <ul>
+                  <li>Challenge-based sourcing</li>
+                  <li>Pilot design &amp; execution</li>
+                  <li>Strategic ecosystem introductions</li>
+                </ul>
+                <a href="#contact" class="card-cta">Learn More <i data-lucide="arrow-right"></i></a>
+              </article>
+
+              <article class="card">
+                <div class="card-icon">
+                  <i data-lucide="landmark"></i>
+                </div>
+                <h3>Government Partnerships</h3>
+                <p>
+                  Navigate programs, incentives, and funding opportunities with guidance from our
+                  experienced team and partners.
+                </p>
+                <ul>
+                  <li>Program awareness and navigation</li>
+                  <li>Application strategy support</li>
+                  <li>Public sector innovation pilots</li>
+                </ul>
+                <a href="#contact" class="card-cta">Learn More <i data-lucide="arrow-right"></i></a>
+              </article>
+            </div>
           </div>
         </div>
       </section>
@@ -224,36 +321,122 @@
 
           <div class="card-grid card-grid-3">
             <article class="card card-highlight">
-              <h3>AIHealth Systems</h3>
+              <div class="founder-testimonial">
+                <img src="https://i.pravatar.cc/100?img=32" alt="Dr. Sarah Chen" class="founder-avatar" />
+                <div class="founder-info">
+                  <h4>Dr. Sarah Chen</h4>
+                  <p class="founder-title">CEO, AIHealth Systems</p>
+                </div>
+              </div>
               <p class="badge">Healthtech · AI</p>
+              <blockquote>
+                "Communitech helped us validate our first 100 healthcare customers and connected us
+                with key pilot partners. The mentorship was invaluable."
+              </blockquote>
               <p>
                 From a small Waterloo team to a national leader in AI-powered diagnostics. Through
-                Communitech, AIHealth Systems connected with early healthcare partners and secured
-                key pilot projects.
+                Communitech, AIHealth Systems secured key pilot projects and strategic partnerships.
               </p>
-              <p class="meta">Outcome: Series A raised, expanded into 3 provinces.</p>
+              <p class="meta">Outcome: $12M Series A raised, expanded into 3 provinces</p>
             </article>
 
             <article class="card card-highlight">
-              <h3>Waterloo Robotics</h3>
+              <div class="founder-testimonial">
+                <img src="https://i.pravatar.cc/100?img=13" alt="Marcus Johnson" class="founder-avatar" />
+                <div class="founder-info">
+                  <h4>Marcus Johnson</h4>
+                  <p class="founder-title">Founder, Waterloo Robotics</p>
+                </div>
+              </div>
               <p class="badge">Advanced Manufacturing</p>
+              <blockquote>
+                "The Scale-Up program helped us refine our GTM strategy and access enterprise customers
+                we couldn't have reached on our own."
+              </blockquote>
               <p>
                 Leveraging robotics and automation to transform industrial operations. Our programs
-                helped the team refine their go-to-market motion and access new enterprise
-                customers.
+                helped the team accelerate their go-to-market motion.
               </p>
-              <p class="meta">Outcome: 4x revenue growth in 24 months.</p>
+              <p class="meta">Outcome: 4x revenue growth in 24 months</p>
             </article>
 
             <article class="card card-highlight">
-              <h3>Finlytics</h3>
+              <div class="founder-testimonial">
+                <img src="https://i.pravatar.cc/100?img=47" alt="Amanda Rodriguez" class="founder-avatar" />
+                <div class="founder-info">
+                  <h4>Amanda Rodriguez</h4>
+                  <p class="founder-title">Co-founder, Finlytics</p>
+                </div>
+              </div>
               <p class="badge">Fintech · SaaS</p>
+              <blockquote>
+                "Communitech's investor network and strategic introductions were game-changing for
+                our fundraising and partnership strategy."
+              </blockquote>
               <p>
                 A B2B analytics platform that scaled from early pilots to a global client base,
-                supported by Communitech’s connections to investors and strategic partners.
+                supported by Communitech's connections to investors and strategic partners.
               </p>
-              <p class="meta">Outcome: 250% YoY growth and global expansion.</p>
+              <p class="meta">Outcome: 250% YoY growth and global expansion</p>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resources / Blog -->
+      <section id="resources" class="section">
+        <div class="container section-inner">
+          <div class="section-header">
+            <h2>Resources &amp; Insights</h2>
+            <p>
+              Learn from founders, experts, and industry leaders — practical advice for building
+              great companies.
+            </p>
+          </div>
+
+          <div class="card-grid card-grid-3">
+            <article class="card resource-card">
+              <div class="resource-image">
+                <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=800&q=80" alt="Fundraising guide" />
+              </div>
+              <div class="resource-tag">Guide</div>
+              <h3>Fundraising in Canada: A Founder's Guide</h3>
+              <p>
+                Everything you need to know about raising capital in the Canadian market, from angels
+                to Series A.
+              </p>
+              <a href="#" class="card-cta">Read Guide <i data-lucide="arrow-right"></i></a>
+            </article>
+
+            <article class="card resource-card">
+              <div class="resource-image">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80" alt="Hiring strategies" />
+              </div>
+              <div class="resource-tag">Article</div>
+              <h3>Hiring Your First 10 Employees</h3>
+              <p>
+                Practical strategies for attracting top talent when you're competing with larger
+                companies and limited resources.
+              </p>
+              <a href="#" class="card-cta">Read Article <i data-lucide="arrow-right"></i></a>
+            </article>
+
+            <article class="card resource-card">
+              <div class="resource-image">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="GTM strategy" />
+              </div>
+              <div class="resource-tag">Webinar</div>
+              <h3>Go-to-Market Strategy for B2B SaaS</h3>
+              <p>
+                Learn how successful founders developed their GTM motion, from customer discovery to
+                scaling sales.
+              </p>
+              <a href="#" class="card-cta">Watch Webinar <i data-lucide="arrow-right"></i></a>
+            </article>
+          </div>
+
+          <div class="text-center" style="margin-top: var(--spacing-xl);">
+            <a href="#" class="btn btn-secondary-dark">View All Resources</a>
           </div>
         </div>
       </section>
@@ -269,7 +452,80 @@
             </p>
           </div>
 
-          <div class="grid-two">
+          <div class="ecosystem-visual">
+            <div class="ecosystem-center">
+              <div class="ecosystem-logo">C</div>
+              <p>Communitech</p>
+            </div>
+
+            <div class="ecosystem-node" style="--angle: 0deg;">
+              <div class="node-icon">
+                <i data-lucide="graduation-cap"></i>
+              </div>
+              <p>Universities</p>
+              <div class="node-tooltip">
+                <strong>Academic Partners</strong>
+                <span>University of Waterloo, Wilfrid Laurier, Conestoga College</span>
+              </div>
+            </div>
+
+            <div class="ecosystem-node" style="--angle: 60deg;">
+              <div class="node-icon">
+                <i data-lucide="dollar-sign"></i>
+              </div>
+              <p>Investors</p>
+              <div class="node-tooltip">
+                <strong>Capital Network</strong>
+                <span>VCs, Angels, and Strategic Investors</span>
+              </div>
+            </div>
+
+            <div class="ecosystem-node" style="--angle: 120deg;">
+              <div class="node-icon">
+                <i data-lucide="building-2"></i>
+              </div>
+              <p>Corporates</p>
+              <div class="node-tooltip">
+                <strong>Innovation Partners</strong>
+                <span>Global tech leaders and enterprise partners</span>
+              </div>
+            </div>
+
+            <div class="ecosystem-node" style="--angle: 180deg;">
+              <div class="node-icon">
+                <i data-lucide="briefcase"></i>
+              </div>
+              <p>Government</p>
+              <div class="node-tooltip">
+                <strong>Public Programs</strong>
+                <span>Municipal, Provincial, and Federal support</span>
+              </div>
+            </div>
+
+            <div class="ecosystem-node" style="--angle: 240deg;">
+              <div class="node-icon">
+                <i data-lucide="sparkles"></i>
+              </div>
+              <p>Startups</p>
+              <div class="node-tooltip">
+                <strong>Founder Community</strong>
+                <span>1,400+ companies at all stages</span>
+              </div>
+            </div>
+
+            <div class="ecosystem-node" style="--angle: 300deg;">
+              <div class="node-icon">
+                <i data-lucide="users-2"></i>
+              </div>
+              <p>Talent</p>
+              <div class="node-tooltip">
+                <strong>Tech Talent</strong>
+                <span>Deep pool of engineers, designers, and operators</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-two" style="margin-top: var(--spacing-3xl);">
             <div>
               <h3>Partners &amp; Collaborators</h3>
               <p>
@@ -287,12 +543,12 @@
               <h3>Why Waterloo Region</h3>
               <p>
                 Waterloo Region has a unique combination of technical talent, entrepreneurship,
-                research excellence, and community spirit. It’s a place where founders, builders,
+                research excellence, and community spirit. It's a place where founders, builders,
                 and innovators come to experiment, scale, and stay.
               </p>
               <p class="meta">
                 From startups to global tech leaders, the region is home to a thriving community of
-                innovators building what’s next.
+                innovators building what's next.
               </p>
             </div>
           </div>
@@ -305,47 +561,75 @@
           <div class="section-header">
             <h2>Events &amp; Community</h2>
             <p>
-              Connect with peers, learn from experts, and be part of a community that’s building
+              Connect with peers, learn from experts, and be part of a community that's building
               the future of tech.
             </p>
           </div>
 
           <div class="card-grid card-grid-3">
-            <article class="card">
+            <article class="card event-card">
+              <div class="event-date">
+                <div class="event-month">DEC</div>
+                <div class="event-day">15</div>
+              </div>
               <div class="card-icon">
                 <i data-lucide="coffee"></i>
               </div>
-              <h3>Founder Meetups</h3>
+              <h3>Founder Meetup: Product-Market Fit</h3>
               <p>
-                Curated sessions for early-stage and scaling founders to share challenges, swap
-                learnings, and build lasting relationships.
+                Join fellow early-stage founders to discuss customer discovery, validation strategies,
+                and finding your PMF.
               </p>
-              <p class="meta">Recurring · In-person &amp; virtual</p>
+              <div class="event-meta">
+                <span><i data-lucide="map-pin"></i> Communitech Hub</span>
+                <span><i data-lucide="clock"></i> 6:00 PM - 8:00 PM</span>
+              </div>
+              <a href="#" class="btn btn-primary btn-full">Register Now</a>
             </article>
 
-            <article class="card">
+            <article class="card event-card">
+              <div class="event-date">
+                <div class="event-month">JAN</div>
+                <div class="event-day">10</div>
+              </div>
               <div class="card-icon">
                 <i data-lucide="presentation"></i>
               </div>
-              <h3>Tech &amp; Talent Events</h3>
+              <h3>Tech Talent Summit 2025</h3>
               <p>
-                Events focused on attracting, retaining, and developing the talent needed to drive
-                growth in high-performing tech companies.
+                Annual event connecting employers with top technical talent. Network with recruiters,
+                hiring managers, and job seekers.
               </p>
-              <p class="meta">Quarterly · Community-wide</p>
+              <div class="event-meta">
+                <span><i data-lucide="video"></i> Virtual + In-Person</span>
+                <span><i data-lucide="clock"></i> 9:00 AM - 5:00 PM</span>
+              </div>
+              <a href="#" class="btn btn-primary btn-full">Register Now</a>
             </article>
 
-            <article class="card">
+            <article class="card event-card">
+              <div class="event-date">
+                <div class="event-month">JAN</div>
+                <div class="event-day">24</div>
+              </div>
               <div class="card-icon">
                 <i data-lucide="megaphone"></i>
               </div>
-              <h3>Pitch &amp; Showcase Nights</h3>
+              <h3>Pitch &amp; Showcase Night</h3>
               <p>
-                A chance for founders to share what they're building with investors, partners, and
-                the broader community.
+                Present your startup to investors, partners, and the broader tech community.
+                Applications reviewed on a rolling basis.
               </p>
-              <p class="meta">Ongoing · Application-based</p>
+              <div class="event-meta">
+                <span><i data-lucide="map-pin"></i> Communitech Hub</span>
+                <span><i data-lucide="users"></i> Application Required</span>
+              </div>
+              <a href="#" class="btn btn-primary btn-full">Apply to Pitch</a>
             </article>
+          </div>
+
+          <div class="text-center" style="margin-top: var(--spacing-xl);">
+            <a href="#" class="btn btn-secondary-dark">View All Events</a>
           </div>
         </div>
       </section>
@@ -356,45 +640,47 @@
           <div class="contact-copy">
             <h2>Talk to Our Team</h2>
             <p>
-              Whether you’re a founder, partner, investor, or ecosystem builder, we’d love to hear
-              from you. Tell us a bit about what you’re working on, and we’ll connect you with the
+              Whether you're a founder, partner, investor, or ecosystem builder, we'd love to hear
+              from you. Tell us a bit about what you're working on, and we'll connect you with the
               right people and programs.
             </p>
 
             <div class="contact-details">
-              <p><strong>Location:</strong> Waterloo Region, Ontario, Canada</p>
+              <p><strong>Location:</strong> 151 Charles Street West, Kitchener, ON N2G 1H6</p>
+              <p><strong>Phone:</strong> <a href="tel:+15195869639">+1 (519) 586-9639</a></p>
               <p><strong>Email:</strong> <a href="mailto:info@communitech.ca">info@communitech.ca</a></p>
               <p><strong>Website:</strong> <a href="https://www.communitech.ca" target="_blank" rel="noopener noreferrer">communitech.ca</a></p>
             </div>
           </div>
 
-          <!-- Simple Contact Form Placeholder -->
+          <!-- Contact Form -->
           <form class="contact-form" aria-label="Contact form">
             <div class="form-row">
               <label for="name">Name</label>
-              <input id="name" type="text" placeholder="Your name" />
+              <input id="name" type="text" placeholder="Your name" required />
             </div>
 
             <div class="form-row">
               <label for="email">Email</label>
-              <input id="email" type="email" placeholder="you@example.com" />
+              <input id="email" type="email" placeholder="you@example.com" required />
             </div>
 
             <div class="form-row">
               <label for="role">I am a...</label>
-              <select id="role">
+              <select id="role" required>
                 <option value="">Select an option</option>
-                <option value="founder">Founder</option>
-                <option value="scaleup">Scale-up leader</option>
+                <option value="founder">Early-stage Founder</option>
+                <option value="scaleup">Scale-up Leader</option>
                 <option value="investor">Investor</option>
-                <option value="corporate">Corporate innovator</option>
-                <option value="ecosystem">Ecosystem partner</option>
+                <option value="corporate">Corporate Innovator</option>
+                <option value="ecosystem">Ecosystem Partner</option>
+                <option value="other">Other</option>
               </select>
             </div>
 
             <div class="form-row">
               <label for="message">How can we help?</label>
-              <textarea id="message" rows="4" placeholder="Tell us a bit about what you're working on..."></textarea>
+              <textarea id="message" rows="4" placeholder="Tell us a bit about what you're working on..." required></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary btn-full">Submit</button>
@@ -416,16 +702,16 @@
               and innovators in Waterloo Region and beyond.
             </p>
             <div class="social-links">
-              <a href="#" aria-label="LinkedIn">
+              <a href="https://linkedin.com/company/communitech" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
                 <i data-lucide="linkedin"></i>
               </a>
-              <a href="#" aria-label="Twitter">
+              <a href="https://twitter.com/communitech" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
                 <i data-lucide="twitter"></i>
               </a>
-              <a href="#" aria-label="Facebook">
+              <a href="https://facebook.com/communitech" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                 <i data-lucide="facebook"></i>
               </a>
-              <a href="#" aria-label="Instagram">
+              <a href="https://instagram.com/communitech" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                 <i data-lucide="instagram"></i>
               </a>
             </div>
@@ -439,6 +725,19 @@
               <li><a href="#programs">Scale-Up Programs</a></li>
               <li><a href="#programs">Talent &amp; Hiring</a></li>
               <li><a href="#programs">Corporate Innovation</a></li>
+              <li><a href="#programs">Global Market Entry</a></li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div class="footer-section">
+            <h4>Resources</h4>
+            <ul class="footer-links">
+              <li><a href="#resources">Blog</a></li>
+              <li><a href="#resources">Guides &amp; Tools</a></li>
+              <li><a href="#events">Events Calendar</a></li>
+              <li><a href="#success">Success Stories</a></li>
+              <li><a href="#">Podcast</a></li>
             </ul>
           </div>
 
@@ -447,9 +746,10 @@
             <h4>Company</h4>
             <ul class="footer-links">
               <li><a href="#about">About Us</a></li>
-              <li><a href="#success">Success Stories</a></li>
+              <li><a href="#">Our Team</a></li>
+              <li><a href="#">Careers</a></li>
               <li><a href="#ecosystem">Ecosystem</a></li>
-              <li><a href="#events">Events</a></li>
+              <li><a href="#contact">Contact Us</a></li>
             </ul>
           </div>
 
@@ -457,10 +757,11 @@
           <div class="footer-section">
             <h4>Connect</h4>
             <ul class="footer-links">
-              <li><a href="#contact">Contact Us</a></li>
-              <li><a href="#">Careers</a></li>
               <li><a href="#">Newsletter</a></li>
-              <li><a href="#">Blog</a></li>
+              <li><a href="#">Partner With Us</a></li>
+              <li><a href="#">Sponsor Events</a></li>
+              <li><a href="#">Media &amp; Press</a></li>
+              <li><a href="#">Donate</a></li>
             </ul>
           </div>
         </div>
@@ -484,6 +785,101 @@
 
     // Keep the footer year current
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+
+    if (mobileMenuToggle) {
+      mobileMenuToggle.addEventListener('click', () => {
+        const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
+        mobileMenuToggle.setAttribute('aria-expanded', !isExpanded);
+        mainNav.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+      });
+    }
+
+    // Program Tabs
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetTab = button.getAttribute('data-tab');
+
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        // Add active class to clicked button and corresponding content
+        button.classList.add('active');
+        document.getElementById(targetTab).classList.add('active');
+      });
+    });
+
+    // Animated Counter for Impact Section
+    const animateCounter = (element) => {
+      const target = parseInt(element.getAttribute('data-target'));
+      const suffix = element.getAttribute('data-suffix') || '';
+      const duration = 2000;
+      const increment = target / (duration / 16);
+      let current = 0;
+
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          element.textContent = Math.floor(current).toLocaleString();
+          requestAnimationFrame(updateCounter);
+        } else {
+          element.textContent = target.toLocaleString() + suffix;
+        }
+      };
+
+      updateCounter();
+    };
+
+    // Intersection Observer for Impact Counters
+    const impactObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counters = entry.target.querySelectorAll('.impact-number');
+          counters.forEach(counter => {
+            if (!counter.classList.contains('animated')) {
+              counter.classList.add('animated');
+              animateCounter(counter);
+            }
+          });
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const impactSection = document.querySelector('.impact-section');
+    if (impactSection) {
+      impactObserver.observe(impactSection);
+    }
+
+    // Scroll Indicator
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+      scrollIndicator.addEventListener('click', () => {
+        const impactSection = document.querySelector('.impact-section');
+        if (impactSection) {
+          impactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+
+    // Close mobile menu when clicking nav links
+    const navLinks = document.querySelectorAll('.main-nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (mainNav.classList.contains('active')) {
+          mainNav.classList.remove('active');
+          mobileMenuToggle.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('menu-open');
+        }
+      });
+    });
   </script>
 </body>
 </html>
