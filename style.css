@@ -289,6 +289,16 @@ body.menu-open {
   transform: translateX(-50%) scaleX(1);
 }
 
+/* Active Navigation Link */
+.nav-link-active {
+  color: var(--color-primary) !important;
+  background-color: rgba(0, 85, 164, 0.1);
+}
+
+.nav-link-active::after {
+  transform: translateX(-50%) scaleX(1) !important;
+}
+
 .nav-link-with-dropdown::after {
   display: none;
 }
