@@ -467,77 +467,93 @@
             </p>
           </div>
 
-          <div class="ecosystem-visual">
+          <div class="ecosystem-visual" role="img" aria-label="Innovation Ecosystem Diagram showing Communitech's connections with Universities, Investors, Corporates, Government, Startups, and Talent">
+            <!-- SVG Connecting Lines -->
+            <svg class="ecosystem-connections" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+              <line class="connection-line" data-node="0" x1="300" y1="300" x2="300" y2="80" />
+              <line class="connection-line" data-node="1" x1="300" y1="300" x2="490" y2="190" />
+              <line class="connection-line" data-node="2" x1="300" y1="300" x2="490" y2="410" />
+              <line class="connection-line" data-node="3" x1="300" y1="300" x2="300" y2="520" />
+              <line class="connection-line" data-node="4" x1="300" y1="300" x2="110" y2="410" />
+              <line class="connection-line" data-node="5" x1="300" y1="300" x2="110" y2="190" />
+            </svg>
+
             <div class="ecosystem-center">
               <div class="ecosystem-logo">C</div>
               <p>Communitech</p>
             </div>
 
-            <div class="ecosystem-node" style="--angle: 0deg;">
+            <button class="ecosystem-node" style="--angle: 0deg;" data-node-index="0" tabindex="0" aria-label="Universities - Academic Partners including University of Waterloo, Wilfrid Laurier, Conestoga College">
               <div class="node-icon">
                 <i data-lucide="graduation-cap"></i>
               </div>
               <p>Universities</p>
-              <div class="node-tooltip">
+              <div class="node-tooltip" role="tooltip">
+                <div class="tooltip-arrow"></div>
                 <strong>Academic Partners</strong>
                 <span>University of Waterloo, Wilfrid Laurier, Conestoga College</span>
               </div>
-            </div>
+            </button>
 
-            <div class="ecosystem-node" style="--angle: 60deg;">
+            <button class="ecosystem-node" style="--angle: 60deg;" data-node-index="1" tabindex="0" aria-label="Investors - Capital Network of VCs, Angels, and Strategic Investors">
               <div class="node-icon">
                 <i data-lucide="dollar-sign"></i>
               </div>
               <p>Investors</p>
-              <div class="node-tooltip">
+              <div class="node-tooltip" role="tooltip">
+                <div class="tooltip-arrow"></div>
                 <strong>Capital Network</strong>
-                <span>VCs, Angels, and Strategic Investors</span>
+                <span>150+ VCs, Angels, and Strategic Investors</span>
               </div>
-            </div>
+            </button>
 
-            <div class="ecosystem-node" style="--angle: 120deg;">
+            <button class="ecosystem-node" style="--angle: 120deg;" data-node-index="2" tabindex="0" aria-label="Corporates - Innovation Partners including global tech leaders and enterprise partners">
               <div class="node-icon">
                 <i data-lucide="building-2"></i>
               </div>
               <p>Corporates</p>
-              <div class="node-tooltip">
+              <div class="node-tooltip" role="tooltip">
+                <div class="tooltip-arrow"></div>
                 <strong>Innovation Partners</strong>
                 <span>Global tech leaders and enterprise partners</span>
               </div>
-            </div>
+            </button>
 
-            <div class="ecosystem-node" style="--angle: 180deg;">
+            <button class="ecosystem-node" style="--angle: 180deg;" data-node-index="3" tabindex="0" aria-label="Government - Public Programs with Municipal, Provincial, and Federal support">
               <div class="node-icon">
                 <i data-lucide="briefcase"></i>
               </div>
               <p>Government</p>
-              <div class="node-tooltip">
+              <div class="node-tooltip" role="tooltip">
+                <div class="tooltip-arrow"></div>
                 <strong>Public Programs</strong>
                 <span>Municipal, Provincial, and Federal support</span>
               </div>
-            </div>
+            </button>
 
-            <div class="ecosystem-node" style="--angle: 240deg;">
+            <button class="ecosystem-node" style="--angle: 240deg;" data-node-index="4" tabindex="0" aria-label="Startups - Founder Community with 1,400+ companies at all stages">
               <div class="node-icon">
                 <i data-lucide="sparkles"></i>
               </div>
               <p>Startups</p>
-              <div class="node-tooltip">
+              <div class="node-tooltip" role="tooltip">
+                <div class="tooltip-arrow"></div>
                 <strong>Founder Community</strong>
                 <span>1,400+ companies at all stages</span>
               </div>
-            </div>
+            </button>
 
-            <div class="ecosystem-node" style="--angle: 300deg;">
+            <button class="ecosystem-node" style="--angle: 300deg;" data-node-index="5" tabindex="0" aria-label="Talent - Deep pool of engineers, designers, and operators">
               <div class="node-icon">
                 <i data-lucide="users-2"></i>
               </div>
               <p>Talent</p>
-              <div class="node-tooltip">
+              <div class="node-tooltip" role="tooltip">
+                <div class="tooltip-arrow"></div>
                 <strong>Tech Talent</strong>
                 <span>Deep pool of engineers, designers, and operators</span>
               </div>
-            </div>
+            </button>
           </div>
 
           <div class="grid-two" style="margin-top: var(--spacing-3xl);">
@@ -893,6 +909,78 @@
           mobileMenuToggle.setAttribute('aria-expanded', 'false');
           document.body.classList.remove('menu-open');
         }
+      });
+    });
+
+    // Ecosystem Node Interactions (Mobile Tap-to-Reveal & Keyboard Navigation)
+    const ecosystemNodes = document.querySelectorAll('.ecosystem-node');
+    let activeNode = null;
+
+    // Function to close active tooltip
+    const closeActiveTooltip = () => {
+      if (activeNode) {
+        activeNode.classList.remove('active');
+        activeNode.setAttribute('aria-expanded', 'false');
+        activeNode = null;
+      }
+    };
+
+    // Function to toggle tooltip
+    const toggleTooltip = (node) => {
+      const isCurrentlyActive = node.classList.contains('active');
+
+      // Close any active tooltip
+      closeActiveTooltip();
+
+      // If the node wasn't active, activate it
+      if (!isCurrentlyActive) {
+        node.classList.add('active');
+        node.setAttribute('aria-expanded', 'true');
+        activeNode = node;
+      }
+    };
+
+    // Add click/tap event listeners to ecosystem nodes
+    ecosystemNodes.forEach(node => {
+      // Click/Tap event
+      node.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleTooltip(node);
+      });
+
+      // Keyboard event (Enter or Space)
+      node.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleTooltip(node);
+        } else if (e.key === 'Escape') {
+          closeActiveTooltip();
+        }
+      });
+
+      // Add aria-expanded attribute
+      node.setAttribute('aria-expanded', 'false');
+    });
+
+    // Close tooltip when clicking outside
+    document.addEventListener('click', (e) => {
+      if (activeNode && !e.target.closest('.ecosystem-node')) {
+        closeActiveTooltip();
+      }
+    });
+
+    // Close tooltip on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && activeNode) {
+        closeActiveTooltip();
+      }
+    });
+
+    // Prevent tooltip from closing when clicking inside it
+    document.querySelectorAll('.node-tooltip').forEach(tooltip => {
+      tooltip.addEventListener('click', (e) => {
+        e.stopPropagation();
       });
     });
   </script>

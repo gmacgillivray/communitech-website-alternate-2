@@ -1181,6 +1181,59 @@ blockquote {
   margin: 0 auto var(--spacing-3xl);
 }
 
+/* SVG Connecting Lines */
+.ecosystem-connections {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.connection-line {
+  stroke: var(--color-primary);
+  stroke-width: 2;
+  stroke-dasharray: 5, 5;
+  opacity: 0.15;
+  transition: all 0.4s ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .connection-line {
+    animation: dash 20s linear infinite;
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+
+.ecosystem-node:hover ~ .ecosystem-connections .connection-line[data-node],
+.ecosystem-node:focus ~ .ecosystem-connections .connection-line[data-node] {
+  opacity: 0.15;
+}
+
+.ecosystem-node[data-node-index="0"]:hover ~ .ecosystem-connections .connection-line[data-node="0"],
+.ecosystem-node[data-node-index="0"]:focus ~ .ecosystem-connections .connection-line[data-node="0"],
+.ecosystem-node[data-node-index="1"]:hover ~ .ecosystem-connections .connection-line[data-node="1"],
+.ecosystem-node[data-node-index="1"]:focus ~ .ecosystem-connections .connection-line[data-node="1"],
+.ecosystem-node[data-node-index="2"]:hover ~ .ecosystem-connections .connection-line[data-node="2"],
+.ecosystem-node[data-node-index="2"]:focus ~ .ecosystem-connections .connection-line[data-node="2"],
+.ecosystem-node[data-node-index="3"]:hover ~ .ecosystem-connections .connection-line[data-node="3"],
+.ecosystem-node[data-node-index="3"]:focus ~ .ecosystem-connections .connection-line[data-node="3"],
+.ecosystem-node[data-node-index="4"]:hover ~ .ecosystem-connections .connection-line[data-node="4"],
+.ecosystem-node[data-node-index="4"]:focus ~ .ecosystem-connections .connection-line[data-node="4"],
+.ecosystem-node[data-node-index="5"]:hover ~ .ecosystem-connections .connection-line[data-node="5"],
+.ecosystem-node[data-node-index="5"]:focus ~ .ecosystem-connections .connection-line[data-node="5"] {
+  opacity: 0.6;
+  stroke-width: 3;
+  stroke: var(--color-accent);
+}
+
 .ecosystem-center {
   position: absolute;
   top: 50%;
@@ -1191,8 +1244,8 @@ blockquote {
 }
 
 .ecosystem-logo {
-  width: 120px;
-  height: 120px;
+  width: clamp(90px, 15vw, 120px);
+  height: clamp(90px, 15vw, 120px);
   margin: 0 auto var(--spacing-sm);
   background: var(--gradient-primary);
   border-radius: 50%;
@@ -1200,7 +1253,7 @@ blockquote {
   align-items: center;
   justify-content: center;
   font-family: var(--font-heading);
-  font-size: 48px;
+  font-size: clamp(36px, 6vw, 48px);
   font-weight: 700;
   color: #ffffff;
   box-shadow: var(--shadow-xl);
@@ -1209,11 +1262,12 @@ blockquote {
 
 .ecosystem-center p {
   margin: 0;
-  font-size: 18px;
+  font-size: clamp(14px, 2.5vw, 18px);
   font-weight: 600;
   color: var(--color-primary);
 }
 
+/* Reset button styles for ecosystem nodes */
 .ecosystem-node {
   position: absolute;
   top: 50%;
@@ -1225,10 +1279,30 @@ blockquote {
   transform: rotate(var(--angle)) translateY(-220px) rotate(calc(-1 * var(--angle)));
   transition: all 0.3s ease;
   text-align: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 3;
+  will-change: transform;
 }
 
-.ecosystem-node:hover {
+@media (prefers-reduced-motion: reduce) {
+  .ecosystem-node {
+    transition: none;
+  }
+}
+
+.ecosystem-node:hover,
+.ecosystem-node:focus {
   transform: rotate(var(--angle)) translateY(-230px) rotate(calc(-1 * var(--angle))) scale(1.1);
+  z-index: 20;
+  outline: none;
+}
+
+.ecosystem-node:focus-visible .node-icon {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
 }
 
 .node-icon {
@@ -1245,10 +1319,11 @@ blockquote {
   transition: all 0.3s ease;
 }
 
-.ecosystem-node:hover .node-icon {
+.ecosystem-node:hover .node-icon,
+.ecosystem-node:focus .node-icon {
   background: var(--gradient-primary);
   border-color: var(--color-accent);
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-xl), 0 0 20px rgba(247, 179, 43, 0.4);
 }
 
 .node-icon i {
@@ -1258,7 +1333,8 @@ blockquote {
   transition: color 0.3s ease;
 }
 
-.ecosystem-node:hover .node-icon i {
+.ecosystem-node:hover .node-icon i,
+.ecosystem-node:focus .node-icon i {
   color: #ffffff;
 }
 
@@ -1269,38 +1345,180 @@ blockquote {
   color: var(--color-text);
 }
 
+/* Smart tooltip positioning - radial outward based on angle */
 .node-tooltip {
   position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   color: #ffffff;
-  padding: var(--spacing-xs) var(--spacing-sm);
+  padding: var(--spacing-sm);
   border-radius: var(--radius-sm);
-  white-space: nowrap;
   font-size: 12px;
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s ease;
-  z-index: 10;
+  z-index: 100;
+  max-width: 220px;
+  white-space: normal;
+  box-shadow: var(--shadow-xl);
+  backdrop-filter: blur(10px);
 }
 
-.ecosystem-node:hover .node-tooltip {
+/* Tooltip arrow */
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+/* Top nodes (300-60 degrees): tooltip above */
+.ecosystem-node[style*="0deg"] .node-tooltip {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  margin-bottom: 10px;
+}
+
+.ecosystem-node[style*="0deg"] .tooltip-arrow {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px 8px 0 8px;
+  border-color: rgba(0, 0, 0, 0.95) transparent transparent transparent;
+}
+
+.ecosystem-node[style*="60deg"] .node-tooltip {
+  top: -10px;
+  left: 100%;
+  transform: translateX(10px);
+  margin-left: 10px;
+}
+
+.ecosystem-node[style*="60deg"] .tooltip-arrow {
+  top: 20px;
+  right: 100%;
+  border-width: 8px 8px 8px 0;
+  border-color: transparent rgba(0, 0, 0, 0.95) transparent transparent;
+}
+
+.ecosystem-node[style*="300deg"] .node-tooltip {
+  top: -10px;
+  right: 100%;
+  transform: translateX(-10px);
+  margin-right: 10px;
+}
+
+.ecosystem-node[style*="300deg"] .tooltip-arrow {
+  top: 20px;
+  left: 100%;
+  border-width: 8px 0 8px 8px;
+  border-color: transparent transparent transparent rgba(0, 0, 0, 0.95);
+}
+
+/* Bottom-right node (120 degrees): tooltip to right */
+.ecosystem-node[style*="120deg"] .node-tooltip {
+  top: 50%;
+  left: 100%;
+  transform: translateX(10px) translateY(-50%);
+  margin-left: 10px;
+}
+
+.ecosystem-node[style*="120deg"] .tooltip-arrow {
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  border-width: 8px 8px 8px 0;
+  border-color: transparent rgba(0, 0, 0, 0.95) transparent transparent;
+}
+
+/* Bottom nodes (180 degrees): tooltip below */
+.ecosystem-node[style*="180deg"] .node-tooltip {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  margin-top: 10px;
+}
+
+.ecosystem-node[style*="180deg"] .tooltip-arrow {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 8px 8px 8px;
+  border-color: transparent transparent rgba(0, 0, 0, 0.95) transparent;
+}
+
+/* Bottom-left node (240 degrees): tooltip to left */
+.ecosystem-node[style*="240deg"] .node-tooltip {
+  top: 50%;
+  right: 100%;
+  transform: translateX(-10px) translateY(-50%);
+  margin-right: 10px;
+}
+
+.ecosystem-node[style*="240deg"] .tooltip-arrow {
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border-width: 8px 0 8px 8px;
+  border-color: transparent transparent transparent rgba(0, 0, 0, 0.95);
+}
+
+.ecosystem-node:hover .node-tooltip,
+.ecosystem-node:focus .node-tooltip,
+.ecosystem-node.active .node-tooltip {
   opacity: 1;
+  pointer-events: auto;
+}
+
+/* Show tooltip on hover/focus with adjusted transforms */
+.ecosystem-node[style*="0deg"]:hover .node-tooltip,
+.ecosystem-node[style*="0deg"]:focus .node-tooltip,
+.ecosystem-node[style*="0deg"].active .node-tooltip {
   transform: translateX(-50%) translateY(0);
+}
+
+.ecosystem-node[style*="60deg"]:hover .node-tooltip,
+.ecosystem-node[style*="60deg"]:focus .node-tooltip,
+.ecosystem-node[style*="60deg"].active .node-tooltip {
+  transform: translateX(0);
+}
+
+.ecosystem-node[style*="120deg"]:hover .node-tooltip,
+.ecosystem-node[style*="120deg"]:focus .node-tooltip,
+.ecosystem-node[style*="120deg"].active .node-tooltip {
+  transform: translateX(0) translateY(-50%);
+}
+
+.ecosystem-node[style*="180deg"]:hover .node-tooltip,
+.ecosystem-node[style*="180deg"]:focus .node-tooltip,
+.ecosystem-node[style*="180deg"].active .node-tooltip {
+  transform: translateX(-50%) translateY(0);
+}
+
+.ecosystem-node[style*="240deg"]:hover .node-tooltip,
+.ecosystem-node[style*="240deg"]:focus .node-tooltip,
+.ecosystem-node[style*="240deg"].active .node-tooltip {
+  transform: translateX(0) translateY(-50%);
+}
+
+.ecosystem-node[style*="300deg"]:hover .node-tooltip,
+.ecosystem-node[style*="300deg"]:focus .node-tooltip,
+.ecosystem-node[style*="300deg"].active .node-tooltip {
+  transform: translateX(0);
 }
 
 .node-tooltip strong {
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   color: var(--color-accent);
+  font-size: 13px;
 }
 
 .node-tooltip span {
   display: block;
   font-size: 11px;
-  opacity: 0.9;
+  opacity: 0.95;
+  line-height: 1.4;
 }
 
 .ecosystem-card {
@@ -1752,12 +1970,11 @@ blockquote {
 
   .ecosystem-visual {
     height: 400px;
+    max-width: 400px;
   }
 
-  .ecosystem-logo {
-    width: 90px;
-    height: 90px;
-    font-size: 36px;
+  .ecosystem-connections {
+    display: none; /* Hide SVG lines on mobile for simplicity */
   }
 
   .ecosystem-node {
@@ -1768,8 +1985,9 @@ blockquote {
     transform: rotate(var(--angle)) translateY(-140px) rotate(calc(-1 * var(--angle)));
   }
 
-  .ecosystem-node:hover {
-    transform: rotate(var(--angle)) translateY(-150px) rotate(calc(-1 * var(--angle))) scale(1.1);
+  .ecosystem-node:hover,
+  .ecosystem-node:focus {
+    transform: rotate(var(--angle)) translateY(-145px) rotate(calc(-1 * var(--angle))) scale(1.05);
   }
 
   .node-icon {
@@ -1783,11 +2001,46 @@ blockquote {
   }
 
   .ecosystem-node p {
-    font-size: 12px;
+    font-size: 11px;
   }
 
+  /* Mobile: Show tooltips on tap/click with active class */
   .node-tooltip {
-    display: none;
+    max-width: 180px;
+    font-size: 11px;
+    padding: 10px 12px;
+  }
+
+  .node-tooltip strong {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .node-tooltip span {
+    font-size: 10px;
+  }
+
+  /* Adjust tooltip arrows for smaller mobile screens */
+  .tooltip-arrow {
+    border-width: 6px;
+  }
+
+  .ecosystem-node[style*="0deg"] .tooltip-arrow {
+    border-width: 6px 6px 0 6px;
+  }
+
+  .ecosystem-node[style*="60deg"] .tooltip-arrow,
+  .ecosystem-node[style*="120deg"] .tooltip-arrow {
+    border-width: 6px 6px 6px 0;
+  }
+
+  .ecosystem-node[style*="180deg"] .tooltip-arrow {
+    border-width: 0 6px 6px 6px;
+  }
+
+  .ecosystem-node[style*="240deg"] .tooltip-arrow,
+  .ecosystem-node[style*="300deg"] .tooltip-arrow {
+    border-width: 6px 0 6px 6px;
   }
 }
 
