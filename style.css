@@ -1345,180 +1345,55 @@ blockquote {
   color: var(--color-text);
 }
 
-/* Smart tooltip positioning - radial outward based on angle */
+/* Consistent tooltip positioning - all appear centered above node */
 .node-tooltip {
   position: absolute;
-  background: rgba(0, 0, 0, 0.95);
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-12px);
+  background: rgba(26, 26, 26, 0.96);
   color: #ffffff;
-  padding: var(--spacing-sm);
-  border-radius: var(--radius-sm);
-  font-size: 12px;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  width: 240px;
   opacity: 0;
   pointer-events: none;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   z-index: 100;
-  max-width: 220px;
-  white-space: normal;
-  box-shadow: var(--shadow-xl);
-  backdrop-filter: blur(10px);
-}
-
-/* Tooltip arrow */
-.tooltip-arrow {
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-style: solid;
-}
-
-/* Top nodes (300-60 degrees): tooltip above */
-.ecosystem-node[style*="0deg"] .node-tooltip {
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-10px);
-  margin-bottom: 10px;
-}
-
-.ecosystem-node[style*="0deg"] .tooltip-arrow {
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 8px 8px 0 8px;
-  border-color: rgba(0, 0, 0, 0.95) transparent transparent transparent;
-}
-
-.ecosystem-node[style*="60deg"] .node-tooltip {
-  top: -10px;
-  left: 100%;
-  transform: translateX(10px);
-  margin-left: 10px;
-}
-
-.ecosystem-node[style*="60deg"] .tooltip-arrow {
-  top: 20px;
-  right: 100%;
-  border-width: 8px 8px 8px 0;
-  border-color: transparent rgba(0, 0, 0, 0.95) transparent transparent;
-}
-
-.ecosystem-node[style*="300deg"] .node-tooltip {
-  top: -10px;
-  right: 100%;
-  transform: translateX(-10px);
-  margin-right: 10px;
-}
-
-.ecosystem-node[style*="300deg"] .tooltip-arrow {
-  top: 20px;
-  left: 100%;
-  border-width: 8px 0 8px 8px;
-  border-color: transparent transparent transparent rgba(0, 0, 0, 0.95);
-}
-
-/* Bottom-right node (120 degrees): tooltip to right */
-.ecosystem-node[style*="120deg"] .node-tooltip {
-  top: 50%;
-  left: 100%;
-  transform: translateX(10px) translateY(-50%);
-  margin-left: 10px;
-}
-
-.ecosystem-node[style*="120deg"] .tooltip-arrow {
-  top: 50%;
-  right: 100%;
-  transform: translateY(-50%);
-  border-width: 8px 8px 8px 0;
-  border-color: transparent rgba(0, 0, 0, 0.95) transparent transparent;
-}
-
-/* Bottom nodes (180 degrees): tooltip below */
-.ecosystem-node[style*="180deg"] .node-tooltip {
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  margin-top: 10px;
-}
-
-.ecosystem-node[style*="180deg"] .tooltip-arrow {
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 0 8px 8px 8px;
-  border-color: transparent transparent rgba(0, 0, 0, 0.95) transparent;
-}
-
-/* Bottom-left node (240 degrees): tooltip to left */
-.ecosystem-node[style*="240deg"] .node-tooltip {
-  top: 50%;
-  right: 100%;
-  transform: translateX(-10px) translateY(-50%);
-  margin-right: 10px;
-}
-
-.ecosystem-node[style*="240deg"] .tooltip-arrow {
-  top: 50%;
-  left: 100%;
-  transform: translateY(-50%);
-  border-width: 8px 0 8px 8px;
-  border-color: transparent transparent transparent rgba(0, 0, 0, 0.95);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 8px;
 }
 
 .ecosystem-node:hover .node-tooltip,
 .ecosystem-node:focus .node-tooltip,
 .ecosystem-node.active .node-tooltip {
   opacity: 1;
+  transform: translateX(-50%) translateY(0);
   pointer-events: auto;
-}
-
-/* Show tooltip on hover/focus with adjusted transforms */
-.ecosystem-node[style*="0deg"]:hover .node-tooltip,
-.ecosystem-node[style*="0deg"]:focus .node-tooltip,
-.ecosystem-node[style*="0deg"].active .node-tooltip {
-  transform: translateX(-50%) translateY(0);
-}
-
-.ecosystem-node[style*="60deg"]:hover .node-tooltip,
-.ecosystem-node[style*="60deg"]:focus .node-tooltip,
-.ecosystem-node[style*="60deg"].active .node-tooltip {
-  transform: translateX(0);
-}
-
-.ecosystem-node[style*="120deg"]:hover .node-tooltip,
-.ecosystem-node[style*="120deg"]:focus .node-tooltip,
-.ecosystem-node[style*="120deg"].active .node-tooltip {
-  transform: translateX(0) translateY(-50%);
-}
-
-.ecosystem-node[style*="180deg"]:hover .node-tooltip,
-.ecosystem-node[style*="180deg"]:focus .node-tooltip,
-.ecosystem-node[style*="180deg"].active .node-tooltip {
-  transform: translateX(-50%) translateY(0);
-}
-
-.ecosystem-node[style*="240deg"]:hover .node-tooltip,
-.ecosystem-node[style*="240deg"]:focus .node-tooltip,
-.ecosystem-node[style*="240deg"].active .node-tooltip {
-  transform: translateX(0) translateY(-50%);
-}
-
-.ecosystem-node[style*="300deg"]:hover .node-tooltip,
-.ecosystem-node[style*="300deg"]:focus .node-tooltip,
-.ecosystem-node[style*="300deg"].active .node-tooltip {
-  transform: translateX(0);
 }
 
 .node-tooltip strong {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   color: var(--color-accent);
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 .node-tooltip span {
   display: block;
-  font-size: 11px;
-  opacity: 0.95;
-  line-height: 1.4;
+  font-size: 12px;
+  opacity: 0.92;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Remove arrow element - not needed */
+.tooltip-arrow {
+  display: none;
 }
 
 .ecosystem-card {
@@ -2004,43 +1879,20 @@ blockquote {
     font-size: 11px;
   }
 
-  /* Mobile: Show tooltips on tap/click with active class */
+  /* Mobile: Smaller tooltips but same consistent positioning */
   .node-tooltip {
-    max-width: 180px;
+    width: 200px;
+    padding: 12px;
     font-size: 11px;
-    padding: 10px 12px;
   }
 
   .node-tooltip strong {
-    font-size: 12px;
-    margin-bottom: 4px;
+    font-size: 13px;
+    margin-bottom: 6px;
   }
 
   .node-tooltip span {
-    font-size: 10px;
-  }
-
-  /* Adjust tooltip arrows for smaller mobile screens */
-  .tooltip-arrow {
-    border-width: 6px;
-  }
-
-  .ecosystem-node[style*="0deg"] .tooltip-arrow {
-    border-width: 6px 6px 0 6px;
-  }
-
-  .ecosystem-node[style*="60deg"] .tooltip-arrow,
-  .ecosystem-node[style*="120deg"] .tooltip-arrow {
-    border-width: 6px 6px 6px 0;
-  }
-
-  .ecosystem-node[style*="180deg"] .tooltip-arrow {
-    border-width: 0 6px 6px 6px;
-  }
-
-  .ecosystem-node[style*="240deg"] .tooltip-arrow,
-  .ecosystem-node[style*="300deg"] .tooltip-arrow {
-    border-width: 6px 0 6px 6px;
+    font-size: 11px;
   }
 }
 
