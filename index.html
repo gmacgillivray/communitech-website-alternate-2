@@ -483,77 +483,73 @@
               <p>Communitech</p>
             </div>
 
-            <button class="ecosystem-node" style="--angle: 0deg;" data-node-index="0" tabindex="0" aria-label="Universities - Academic Partners including University of Waterloo, Wilfrid Laurier, Conestoga College">
+            <button class="ecosystem-node" style="--angle: 0deg;" data-node-index="0" tabindex="0"
+                    data-tooltip-title="Academic Partners"
+                    data-tooltip-content="University of Waterloo, Wilfrid Laurier, Conestoga College"
+                    aria-label="Universities - Academic Partners including University of Waterloo, Wilfrid Laurier, Conestoga College">
               <div class="node-icon">
                 <i data-lucide="graduation-cap"></i>
               </div>
               <p>Universities</p>
-              <div class="node-tooltip" role="tooltip">
-                <div class="tooltip-arrow"></div>
-                <strong>Academic Partners</strong>
-                <span>University of Waterloo, Wilfrid Laurier, Conestoga College</span>
-              </div>
             </button>
 
-            <button class="ecosystem-node" style="--angle: 60deg;" data-node-index="1" tabindex="0" aria-label="Investors - Capital Network of VCs, Angels, and Strategic Investors">
+            <button class="ecosystem-node" style="--angle: 60deg;" data-node-index="1" tabindex="0"
+                    data-tooltip-title="Capital Network"
+                    data-tooltip-content="150+ VCs, Angels, and Strategic Investors"
+                    aria-label="Investors - Capital Network of VCs, Angels, and Strategic Investors">
               <div class="node-icon">
                 <i data-lucide="dollar-sign"></i>
               </div>
               <p>Investors</p>
-              <div class="node-tooltip" role="tooltip">
-                <div class="tooltip-arrow"></div>
-                <strong>Capital Network</strong>
-                <span>150+ VCs, Angels, and Strategic Investors</span>
-              </div>
             </button>
 
-            <button class="ecosystem-node" style="--angle: 120deg;" data-node-index="2" tabindex="0" aria-label="Corporates - Innovation Partners including global tech leaders and enterprise partners">
+            <button class="ecosystem-node" style="--angle: 120deg;" data-node-index="2" tabindex="0"
+                    data-tooltip-title="Innovation Partners"
+                    data-tooltip-content="Global tech leaders and enterprise partners"
+                    aria-label="Corporates - Innovation Partners including global tech leaders and enterprise partners">
               <div class="node-icon">
                 <i data-lucide="building-2"></i>
               </div>
               <p>Corporates</p>
-              <div class="node-tooltip" role="tooltip">
-                <div class="tooltip-arrow"></div>
-                <strong>Innovation Partners</strong>
-                <span>Global tech leaders and enterprise partners</span>
-              </div>
             </button>
 
-            <button class="ecosystem-node" style="--angle: 180deg;" data-node-index="3" tabindex="0" aria-label="Government - Public Programs with Municipal, Provincial, and Federal support">
+            <button class="ecosystem-node" style="--angle: 180deg;" data-node-index="3" tabindex="0"
+                    data-tooltip-title="Public Programs"
+                    data-tooltip-content="Municipal, Provincial, and Federal support"
+                    aria-label="Government - Public Programs with Municipal, Provincial, and Federal support">
               <div class="node-icon">
                 <i data-lucide="briefcase"></i>
               </div>
               <p>Government</p>
-              <div class="node-tooltip" role="tooltip">
-                <div class="tooltip-arrow"></div>
-                <strong>Public Programs</strong>
-                <span>Municipal, Provincial, and Federal support</span>
-              </div>
             </button>
 
-            <button class="ecosystem-node" style="--angle: 240deg;" data-node-index="4" tabindex="0" aria-label="Startups - Founder Community with 1,400+ companies at all stages">
+            <button class="ecosystem-node" style="--angle: 240deg;" data-node-index="4" tabindex="0"
+                    data-tooltip-title="Founder Community"
+                    data-tooltip-content="1,400+ companies at all stages"
+                    aria-label="Startups - Founder Community with 1,400+ companies at all stages">
               <div class="node-icon">
                 <i data-lucide="sparkles"></i>
               </div>
               <p>Startups</p>
-              <div class="node-tooltip" role="tooltip">
-                <div class="tooltip-arrow"></div>
-                <strong>Founder Community</strong>
-                <span>1,400+ companies at all stages</span>
-              </div>
             </button>
 
-            <button class="ecosystem-node" style="--angle: 300deg;" data-node-index="5" tabindex="0" aria-label="Talent - Deep pool of engineers, designers, and operators">
+            <button class="ecosystem-node" style="--angle: 300deg;" data-node-index="5" tabindex="0"
+                    data-tooltip-title="Tech Talent"
+                    data-tooltip-content="Deep pool of engineers, designers, and operators"
+                    aria-label="Talent - Deep pool of engineers, designers, and operators">
               <div class="node-icon">
                 <i data-lucide="users-2"></i>
               </div>
               <p>Talent</p>
-              <div class="node-tooltip" role="tooltip">
-                <div class="tooltip-arrow"></div>
-                <strong>Tech Talent</strong>
-                <span>Deep pool of engineers, designers, and operators</span>
-              </div>
             </button>
+          </div>
+
+          <!-- Central Tooltip Display -->
+          <div class="ecosystem-tooltip-display" id="ecosystem-tooltip" role="status" aria-live="polite">
+            <div class="ecosystem-tooltip-content">
+              <strong id="ecosystem-tooltip-title">Hover or tap a node to learn more</strong>
+              <p id="ecosystem-tooltip-text">Explore the connections in Waterloo Region's innovation ecosystem</p>
+            </div>
           </div>
 
           <div class="grid-two" style="margin-top: var(--spacing-3xl);">
@@ -912,75 +908,58 @@
       });
     });
 
-    // Ecosystem Node Interactions (Mobile Tap-to-Reveal & Keyboard Navigation)
+    // Central Ecosystem Tooltip Updates
     const ecosystemNodes = document.querySelectorAll('.ecosystem-node');
-    let activeNode = null;
+    const tooltipDisplay = document.getElementById('ecosystem-tooltip');
+    const tooltipTitle = document.getElementById('ecosystem-tooltip-title');
+    const tooltipText = document.getElementById('ecosystem-tooltip-text');
 
-    // Function to close active tooltip
-    const closeActiveTooltip = () => {
-      if (activeNode) {
-        activeNode.classList.remove('active');
-        activeNode.setAttribute('aria-expanded', 'false');
-        activeNode = null;
+    const defaultTitle = 'Hover or tap a node to learn more';
+    const defaultText = 'Explore the connections in Waterloo Region\'s innovation ecosystem';
+
+    // Function to update central tooltip
+    const updateTooltip = (node) => {
+      const title = node.getAttribute('data-tooltip-title');
+      const content = node.getAttribute('data-tooltip-content');
+
+      if (title && content) {
+        tooltipTitle.textContent = title;
+        tooltipText.textContent = content;
+        tooltipDisplay.classList.add('active');
       }
     };
 
-    // Function to toggle tooltip
-    const toggleTooltip = (node) => {
-      const isCurrentlyActive = node.classList.contains('active');
-
-      // Close any active tooltip
-      closeActiveTooltip();
-
-      // If the node wasn't active, activate it
-      if (!isCurrentlyActive) {
-        node.classList.add('active');
-        node.setAttribute('aria-expanded', 'true');
-        activeNode = node;
-      }
+    // Function to reset tooltip
+    const resetTooltip = () => {
+      tooltipTitle.textContent = defaultTitle;
+      tooltipText.textContent = defaultText;
+      tooltipDisplay.classList.remove('active');
     };
 
-    // Add click/tap event listeners to ecosystem nodes
+    // Add event listeners to ecosystem nodes
     ecosystemNodes.forEach(node => {
-      // Click/Tap event
+      // Mouse hover
+      node.addEventListener('mouseenter', () => {
+        updateTooltip(node);
+      });
+
+      node.addEventListener('mouseleave', () => {
+        resetTooltip();
+      });
+
+      // Touch/click for mobile
       node.addEventListener('click', (e) => {
         e.preventDefault();
-        e.stopPropagation();
-        toggleTooltip(node);
+        updateTooltip(node);
       });
 
-      // Keyboard event (Enter or Space)
-      node.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggleTooltip(node);
-        } else if (e.key === 'Escape') {
-          closeActiveTooltip();
-        }
+      // Keyboard focus
+      node.addEventListener('focus', () => {
+        updateTooltip(node);
       });
 
-      // Add aria-expanded attribute
-      node.setAttribute('aria-expanded', 'false');
-    });
-
-    // Close tooltip when clicking outside
-    document.addEventListener('click', (e) => {
-      if (activeNode && !e.target.closest('.ecosystem-node')) {
-        closeActiveTooltip();
-      }
-    });
-
-    // Close tooltip on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && activeNode) {
-        closeActiveTooltip();
-      }
-    });
-
-    // Prevent tooltip from closing when clicking inside it
-    document.querySelectorAll('.node-tooltip').forEach(tooltip => {
-      tooltip.addEventListener('click', (e) => {
-        e.stopPropagation();
+      node.addEventListener('blur', () => {
+        resetTooltip();
       });
     });
   </script>
